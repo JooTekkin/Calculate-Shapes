@@ -1,5 +1,9 @@
+
+import perimeterAssignmentPart1.PerimeterAssignmentRunner;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        PerimeterAssignmentRunner perimeter = new PerimeterAssignmentRunner();
+        perimeter.testPerimeter();
     }
 }

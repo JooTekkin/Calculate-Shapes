@@ -1,3 +1,5 @@
+package perimeterAssignmentPart1;
+
 import edu.duke.*;
 import java.io.File;
 
@@ -20,14 +22,18 @@ public class PerimeterAssignmentRunner {
         return totalPerim;
     }
 
-    public int getNumPoints (Shape s) {
-        // Put code here
-        return 0;
+    //This method calculate the number of the shapes
+     public int getNumPoints (Shape s) {
+        int numPoints = 0;
+        for(Point ignored : s.getPoints()){
+            numPoints++;
+        }
+        return numPoints;
     }
 
+    //This method calculate the average of the shapes
     public double getAverageLength(Shape s) {
-        // Put code here
-        return 0.0;
+        return getPerimeter(s) / getNumPoints(s);
     }
 
     public double getLargestSide(Shape s) {
@@ -55,7 +61,10 @@ public class PerimeterAssignmentRunner {
         FileResource fr = new FileResource();
         Shape s = new Shape(fr);
         double length = getPerimeter(s);
-        System.out.println("perimeter = " + length);
+        int numPoints = getNumPoints(s);
+        double averageLength = getAverageLength(s);
+        System.out.println("perimeter = " + length +"\nnumber of points = " + numPoints +
+                "\nAverage Length = " + averageLength);
     }
     
     public void testPerimeterMultipleFiles() {
@@ -76,7 +85,8 @@ public class PerimeterAssignmentRunner {
             System.out.println(p);
         }
         double peri = getPerimeter(triangle);
-        System.out.println("perimeter = "+peri);
+        int numPoints = getNumPoints(triangle);
+        System.out.println("perimeter = "+peri +"\nnumber of points = " + numPoints);
     }
 
     // This method prints names of all files in a chosen folder that you can use to test your other methods
@@ -87,8 +97,4 @@ public class PerimeterAssignmentRunner {
         }
     }
 
-    public static void main (String[] args) {
-        PerimeterAssignmentRunner pr = new PerimeterAssignmentRunner();
-        pr.testPerimeter();
-    }
 }
